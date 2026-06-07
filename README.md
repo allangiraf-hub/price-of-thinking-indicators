@@ -5,7 +5,7 @@ financed in a way that can absorb disappointment. Companion to chapter 9 of
 [*The Price of Thinking*](https://priceofthinking.com/chapters/the-boom/)
 (Allan Pedersen, 2026).
 
-**Dashboard:** https://allangiraf-hub.github.io/price-of-thinking-indicators/
+**Dashboard:** https://indicators.priceofthinking.com/
 (auto-refreshed weekly by GitHub Actions; every number traceable to a
 public primary source).
 
