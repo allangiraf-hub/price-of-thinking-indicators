@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI boom indicators — The Price of Thinking</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#faf8f5; --ink:#1f1d1a; --muted:#6f6a62; --rule:#e4ded4;
+  --accent:#4878a8; --accent2:#e0913f; --bad:#c0504d; --card:#ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#171513; --ink:#e8e4dd; --muted:#9b948a; --rule:#33302b;
+          --accent:#7ea4c9; --accent2:#e0a35f; --bad:#d4716e; --card:#201d1a; }
+}
+* { box-sizing:border-box; }
+body { font-family: Georgia, 'Times New Roman', serif; background:var(--bg);
+       color:var(--ink); max-width:880px; margin:0 auto; padding:2.5rem 1.2rem 4rem;
+       line-height:1.55; }
+.mark { font-size:.8rem; letter-spacing:.28em; text-transform:uppercase;
+        color:var(--muted); }
+.mark a { color:inherit; text-decoration:none; }
+h1 { font-size:2rem; font-weight:normal; margin:.4rem 0 .2rem; }
+.stamp { color:var(--muted); font-size:.85rem; margin-bottom:2rem; }
+.lede { font-size:1.02rem; max-width:60ch; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+         gap:.8rem; margin:2rem 0 2.5rem; }
+.card { background:var(--card); border:1px solid var(--rule); border-radius:6px;
+        padding:.9rem 1rem; }
+.card .num { font-size:1.7rem; }
+.card .num.warn { color:var(--bad); }
+.card .lbl { font-size:.8rem; color:var(--muted); }
+section { margin:3rem 0; }
+h2 { font-size:1.15rem; font-weight:normal; border-top:1px solid var(--rule);
+     padding-top:1.6rem; }
+h2 .no { color:var(--muted); margin-right:.5em; }
+.falsify { font-style:italic; color:var(--muted); font-size:.92rem;
+           margin:-.3rem 0 1rem; }
+.chartbox { background:var(--card); border:1px solid var(--rule);
+            border-radius:6px; padding:1rem; }
+canvas { max-height:340px; }
+footer { border-top:1px solid var(--rule); margin-top:3.5rem; padding-top:1.2rem;
+         color:var(--muted); font-size:.85rem; }
+a { color:var(--accent); }
+</style></head><body>
+<div class="mark"><a href="https://priceofthinking.com/">The Price of Thinking</a> · Indicators</div>
+<h1>AI boom indicators</h1>
+<div class="stamp">Last refresh: 2026-06-07 · updated weekly, automatically ·
+<a href="https://github.com/allangiraf-hub/price-of-thinking-indicators">source &amp; methodology</a></div>
+<p class="lede">Four falsifiable indicators of whether the AI investment boom is
+being financed in a way that can absorb disappointment — the live companion to
+<a href="https://priceofthinking.com/chapters/the-boom/">chapter&nbsp;9 of
+<em>The Price of Thinking</em></a>. Every number is drawn from a public primary
+source: SEC filings, FRED, and the GPU rental marketplace.</p>
+
+<div class="cards" id="cards"></div>
+
+<section>
+<h2><span class="no">1</span>Capex vs AI revenue</h2>
+<p class="falsify">Doubt the boom if the ratio keeps widening while revenue growth stalls.</p>
+<div class="chartbox"><canvas id="c_capex"></canvas></div>
+</section>
+
+<section>
+<h2><span class="no">2</span>Depreciation realism</h2>
+<p class="falsify">Chips age like fish: watch for assumed server lives shortening toward the sceptics&rsquo; 2&ndash;3 years. Each value is extracted from the latest 10-K with its source sentence preserved.</p>
+<div class="chartbox"><canvas id="c_depr"></canvas></div>
+</section>
+
+<section>
+<h2><span class="no">3</span>Financing mix</h2>
+<p class="falsify">A boom funded from cash flow can absorb disappointment; one funded by debt cannot. Above the dashed line, capex exceeds operating cash flow.</p>
+<div class="chartbox"><canvas id="c_fin"></canvas></div>
+</section>
+
+<section>
+<h2><span class="no">4</span>GPU rental spot prices</h2>
+<p class="falsify">Falling rental prices for top-end chips would be the first hard evidence of overcapacity.</p>
+<div class="chartbox"><canvas id="c_gpu"></canvas></div>
+</section>
+
+<footer>Sources: SEC EDGAR (XBRL company facts; 10-K text), FRED
+(fredgraph.csv), vast.ai public marketplace. Curated inputs carry citations in
+<a href="https://github.com/allangiraf-hub/price-of-thinking-indicators/tree/main/data/curated">data/curated</a>.
+© Allan Pedersen · MIT licence.</footer>
+
+<script>
+const DATA = {"generated": "2026-06-07", "capex": [{"year": 2007, "capex": 0.2, "revenue": null, "ratio": null}, {"year": 2008, "capex": 3.5, "revenue": null, "ratio": null}, {"year": 2009, "capex": 3.5, "revenue": null, "ratio": null}, {"year": 2010, "capex": 3.5, "revenue": null, "ratio": null}, {"year": 2011, "capex": 5.2, "revenue": null, "ratio": null}, {"year": 2012, "capex": 8.0, "revenue": null, "ratio": null}, {"year": 2013, "capex": 17.1, "revenue": null, "ratio": null}, {"year": 2014, "capex": 23.8, "revenue": null, "ratio": null}, {"year": 2015, "capex": 24.4, "revenue": null, "ratio": null}, {"year": 2016, "capex": 32.0, "revenue": null, "ratio": null}, {"year": 2017, "capex": 42.0, "revenue": null, "ratio": null}, {"year": 2018, "capex": 65.8, "revenue": null, "ratio": null}, {"year": 2019, "capex": 71.1, "revenue": null, "ratio": null}, {"year": 2020, "capex": 94.6, "revenue": null, "ratio": null}, {"year": 2021, "capex": 127.1, "revenue": null, "ratio": null}, {"year": 2022, "capex": 155.0, "revenue": null, "ratio": null}, {"year": 2023, "capex": 149.0, "revenue": null, "ratio": null}, {"year": 2024, "capex": 224.1, "revenue": null, "ratio": null}, {"year": 2025, "capex": 378.7, "revenue": 60.0, "ratio": 6.31205}], "financing": [{"ticker": "MSFT", "year": 2008, "ratio": 0.147}, {"ticker": "MSFT", "year": 2009, "ratio": 0.164}, {"ticker": "MSFT", "year": 2010, "ratio": 0.082}, {"ticker": "MSFT", "year": 2011, "ratio": 0.087}, {"ticker": "MSFT", "year": 2012, "ratio": 0.073}, {"ticker": "MSFT", "year": 2013, "ratio": 0.148}, {"ticker": "MSFT", "year": 2016, "ratio": 0.25}, {"ticker": "MSFT", "year": 2017, "ratio": 0.206}, {"ticker": "MSFT", "year": 2018, "ratio": 0.265}, {"ticker": "MSFT", "year": 2019, "ratio": 0.267}, {"ticker": "MSFT", "year": 2020, "ratio": 0.254}, {"ticker": "MSFT", "year": 2021, "ratio": 0.269}, {"ticker": "MSFT", "year": 2022, "ratio": 0.268}, {"ticker": "MSFT", "year": 2023, "ratio": 0.321}, {"ticker": "MSFT", "year": 2024, "ratio": 0.375}, {"ticker": "MSFT", "year": 2025, "ratio": 0.474}, {"ticker": "GOOGL", "year": 2013, "ratio": 0.384}, {"ticker": "GOOGL", "year": 2014, "ratio": 0.478}, {"ticker": "GOOGL", "year": 2015, "ratio": 0.374}, {"ticker": "GOOGL", "year": 2016, "ratio": 0.283}, {"ticker": "GOOGL", "year": 2017, "ratio": 0.355}, {"ticker": "GOOGL", "year": 2018, "ratio": 0.524}, {"ticker": "GOOGL", "year": 2019, "ratio": 0.432}, {"ticker": "GOOGL", "year": 2020, "ratio": 0.342}, {"ticker": "GOOGL", "year": 2021, "ratio": 0.269}, {"ticker": "GOOGL", "year": 2022, "ratio": 0.344}, {"ticker": "GOOGL", "year": 2023, "ratio": 0.317}, {"ticker": "GOOGL", "year": 2024, "ratio": 0.419}, {"ticker": "GOOGL", "year": 2025, "ratio": 0.555}, {"ticker": "AMZN", "year": 2007, "ratio": 0.159}, {"ticker": "AMZN", "year": 2008, "ratio": 0.196}, {"ticker": "AMZN", "year": 2009, "ratio": 0.113}, {"ticker": "AMZN", "year": 2010, "ratio": 0.28}, {"ticker": "AMZN", "year": 2011, "ratio": 0.464}, {"ticker": "AMZN", "year": 2012, "ratio": 0.906}, {"ticker": "AMZN", "year": 2013, "ratio": 0.629}, {"ticker": "AMZN", "year": 2014, "ratio": 0.715}, {"ticker": "AMZN", "year": 2015, "ratio": 0.381}, {"ticker": "AMZN", "year": 2016, "ratio": 0.452}, {"ticker": "AMZN", "year": 2017, "ratio": 0.649}, {"ticker": "AMZN", "year": 2018, "ratio": 0.437}, {"ticker": "AMZN", "year": 2019, "ratio": 0.438}, {"ticker": "AMZN", "year": 2020, "ratio": 0.608}, {"ticker": "AMZN", "year": 2021, "ratio": 1.318}, {"ticker": "AMZN", "year": 2022, "ratio": 1.361}, {"ticker": "AMZN", "year": 2023, "ratio": 0.621}, {"ticker": "AMZN", "year": 2024, "ratio": 0.716}, {"ticker": "AMZN", "year": 2025, "ratio": 0.945}, {"ticker": "META", "year": 2010, "ratio": 0.42}, {"ticker": "META", "year": 2011, "ratio": 0.391}, {"ticker": "META", "year": 2012, "ratio": 0.766}, {"ticker": "META", "year": 2013, "ratio": 0.323}, {"ticker": "META", "year": 2014, "ratio": 0.25}, {"ticker": "META", "year": 2015, "ratio": 0.244}, {"ticker": "META", "year": 2016, "ratio": 0.279}, {"ticker": "META", "year": 2017, "ratio": 0.278}, {"ticker": "META", "year": 2018, "ratio": 0.475}, {"ticker": "META", "year": 2019, "ratio": 0.416}, {"ticker": "META", "year": 2020, "ratio": 0.391}, {"ticker": "META", "year": 2021, "ratio": 0.324}, {"ticker": "META", "year": 2022, "ratio": 0.623}, {"ticker": "META", "year": 2023, "ratio": 0.383}, {"ticker": "META", "year": 2024, "ratio": 0.408}, {"ticker": "META", "year": 2025, "ratio": 0.602}, {"ticker": "ORCL", "year": 2010, "ratio": 0.026}, {"ticker": "ORCL", "year": 2011, "ratio": 0.04}, {"ticker": "ORCL", "year": 2012, "ratio": 0.047}, {"ticker": "ORCL", "year": 2013, "ratio": 0.046}, {"ticker": "ORCL", "year": 2016, "ratio": 0.087}, {"ticker": "ORCL", "year": 2017, "ratio": 0.143}, {"ticker": "ORCL", "year": 2018, "ratio": 0.113}, {"ticker": "ORCL", "year": 2019, "ratio": 0.114}, {"ticker": "ORCL", "year": 2020, "ratio": 0.119}, {"ticker": "ORCL", "year": 2021, "ratio": 0.134}, {"ticker": "ORCL", "year": 2022, "ratio": 0.473}, {"ticker": "ORCL", "year": 2023, "ratio": 0.507}, {"ticker": "ORCL", "year": 2024, "ratio": 0.368}, {"ticker": "ORCL", "year": 2025, "ratio": 1.019}], "depreciation": [{"ticker": "AMZN", "life": 5.0, "from": 6.0}, {"ticker": "META", "life": 5.5, "from": null}, {"ticker": "MSFT", "life": 6.0, "from": null}, {"ticker": "ORCL", "life": 6.0, "from": 5.0}], "gpu": [{"date": "2026-06-07", "model": "H200", "usd": 2.0013}, {"date": "2026-06-07", "model": "RTX 4090", "usd": 0.1517}, {"date": "2026-06-07", "model": "B200", "usd": 4.5819}]};
+const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const A = css('--accent'), A2 = css('--accent2'), BAD = css('--bad'),
+      MUT = css('--muted'), INK = css('--ink');
+Chart.defaults.font.family = "Georgia, serif";
+Chart.defaults.color = MUT;
+
+// ----- headline cards -----
+const last = DATA.capex[DATA.capex.length - 1];
+const worstFin = DATA.financing.filter(d => d.year === Math.max(...DATA.financing.map(x => x.year)))
+                              .sort((a, b) => b.ratio - a.ratio)[0];
+const cut = DATA.depreciation.find(d => d.from && d.from > d.life);
+const gpuModels = [...new Set(DATA.gpu.map(d => d.model))];
+const topGpu = DATA.gpu.filter(d => d.model === (gpuModels.includes('B200') ? 'B200' : gpuModels[0]));
+const cards = [
+  [last.ratio ? last.ratio.toFixed(1) + ':1' : '—', `capex vs AI revenue, ${last.year}`, false],
+  [worstFin ? (worstFin.ratio).toFixed(2) : '—', `${worstFin.ticker} capex / operating cash flow, ${worstFin.year}`, worstFin.ratio > 1],
+  [cut ? `${cut.from}y → ${cut.life}y` : 'none', cut ? `${cut.ticker} shortened server lives` : 'no shortened server lives', !!cut],
+  [topGpu.length ? '$' + topGpu[topGpu.length-1].usd.toFixed(2) : '—', `${topGpu.length ? topGpu[0].model : ''} median $/GPU-hr`, false],
+];
+document.getElementById('cards').innerHTML = cards.map(([n, l, warn]) =>
+  `<div class="card"><div class="num${warn ? ' warn' : ''}">${n}</div><div class="lbl">${l}</div></div>`).join('');
+
+// ----- 1: capex vs revenue -----
+const cy = DATA.capex.filter(d => d.year >= 2019);
+new Chart(c_capex, { type: 'bar', data: { labels: cy.map(d => d.year), datasets: [
+  { label: 'Hyperscaler capex ($bn)', data: cy.map(d => d.capex), backgroundColor: A },
+  { label: 'Est. AI revenue ($bn)', data: cy.map(d => d.revenue), backgroundColor: A2 },
+]}, options: { plugins: { tooltip: { callbacks: { afterBody: (it) => {
+  const d = cy[it[0].dataIndex];
+  return d.ratio ? `ratio ${d.ratio.toFixed(1)} : 1` : '';
+}}}}, scales: { y: { title: { display: true, text: 'USD bn / year' }}}}});
+
+// ----- 2: depreciation -----
+const dep = DATA.depreciation;
+new Chart(c_depr, { type: 'bar', data: { labels: dep.map(d => d.ticker), datasets: [{
+  label: 'disclosed server life (years)', data: dep.map(d => d.life),
+  backgroundColor: dep.map(d => d.from && d.from > d.life ? BAD : A),
+}]}, options: { indexAxis: 'y', plugins: { tooltip: { callbacks: { afterBody: (it) => {
+  const d = dep[it[0].dataIndex];
+  return d.from ? `changed from ${d.from}y` : 'range disclosure';
+}}}}, scales: { x: { max: 8, title: { display: true, text: 'years' }}}}});
+
+// ----- 3: financing mix -----
+const tickers = [...new Set(DATA.financing.map(d => d.ticker))];
+const finYears = [...new Set(DATA.financing.filter(d => d.year >= 2019).map(d => d.year))].sort();
+const palette = [A, A2, BAD, MUT, INK];
+new Chart(c_fin, { type: 'line', data: { labels: finYears, datasets: [
+  ...tickers.map((t, i) => ({ label: t, borderColor: palette[i % palette.length],
+    backgroundColor: palette[i % palette.length],
+    data: finYears.map(y => { const r = DATA.financing.find(d => d.ticker === t && d.year === y);
+                              return r ? r.ratio : null; }) })),
+  { label: 'capex = cash flow', data: finYears.map(() => 1), borderColor: BAD,
+    borderDash: [6, 4], pointRadius: 0, borderWidth: 1 },
+]}, options: { scales: { y: { title: { display: true, text: 'capex / operating cash flow' }}}}});
+
+// ----- 4: GPU prices -----
+const gDates = [...new Set(DATA.gpu.map(d => d.date))].sort();
+new Chart(c_gpu, { type: 'line', data: { labels: gDates, datasets:
+  gpuModels.map((m, i) => ({ label: m, borderColor: palette[i % palette.length],
+    backgroundColor: palette[i % palette.length],
+    data: gDates.map(dt => { const r = DATA.gpu.find(d => d.model === m && d.date === dt);
+                             return r ? r.usd : null; }) })),
+}, options: { scales: { y: { title: { display: true, text: 'USD per GPU-hour' }}}}});
+</script>
+</body></html>

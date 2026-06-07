@@ -1,0 +1,27 @@
+name: refresh-indicators
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:        # manual run button
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - run: python -m potindicators.cli all
+      - name: Commit refreshed data and charts
+        run: |
+          git config user.name "indicator-bot"
+          git config user.email "actions@github.com"
+          git add data/ docs/ REPORT.md
+          git diff --cached --quiet || git commit -m "Auto-refresh $(date -u +%F)"
+          git push

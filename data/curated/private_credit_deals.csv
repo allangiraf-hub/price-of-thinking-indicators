@@ -1,0 +1,2 @@
+date,borrower,instrument,amount_usd_bn,lenders,source_url,verified
+,,,,,,"TODO: seed with verified deals (CoreWeave facilities, Meta/Blue Owl Hyperion JV, Vantage). Each row needs a primary-source URL before inclusion."

@@ -1,0 +1,17 @@
+[project]
+name = "potindicators"
+version = "0.1.0"
+description = "Live indicators for the AI investment boom — companion to The Price of Thinking, ch. 9"
+authors = [{ name = "Allan Pedersen", email = "allangiraf@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.0", "requests>=2.31", "matplotlib>=3.7"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
