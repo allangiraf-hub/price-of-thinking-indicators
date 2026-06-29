@@ -1,5 +1,5 @@
 {
- "generated": "2026-06-22",
+ "generated": "2026-06-29",
  "capex": [
   {
    "year": 2007,
@@ -114,6 +114,12 @@
    "capex": 378.7,
    "revenue": 60.0,
    "ratio": 6.31205
+  },
+  {
+   "year": 2026,
+   "capex": 55.7,
+   "revenue": null,
+   "ratio": null
   }
  ],
  "financing": [
@@ -506,6 +512,11 @@
    "ticker": "ORCL",
    "year": 2025,
    "ratio": 1.019
+  },
+  {
+   "ticker": "ORCL",
+   "year": 2026,
+   "ratio": 1.741
   }
  ],
  "depreciation": [
@@ -523,11 +534,6 @@
    "ticker": "MSFT",
    "life": 6.0,
    "from": null
-  },
-  {
-   "ticker": "ORCL",
-   "life": 6.0,
-   "from": 5.0
   }
  ],
  "gpu": [
@@ -595,6 +601,21 @@
    "date": "2026-06-22",
    "model": "B200",
    "usd": 3.9774
+  },
+  {
+   "date": "2026-06-29",
+   "model": "H200",
+   "usd": 2.485
+  },
+  {
+   "date": "2026-06-29",
+   "model": "RTX 4090",
+   "usd": 0.1689
+  },
+  {
+   "date": "2026-06-29",
+   "model": "B200",
+   "usd": 4.3472
   }
  ]
 }
