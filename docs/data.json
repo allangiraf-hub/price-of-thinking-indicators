@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-27",
+ "generated": "2026-08-03",
  "capex": [
   {
    "year": 2007,
@@ -117,7 +117,7 @@
   },
   {
    "year": 2026,
-   "capex": 55.7,
+   "capex": 344.6,
    "revenue": null,
    "ratio": null
   }
@@ -202,6 +202,11 @@
    "ticker": "MSFT",
    "year": 2025,
    "ratio": 0.474
+  },
+  {
+   "ticker": "MSFT",
+   "year": 2026,
+   "ratio": 0.634
   },
   {
    "ticker": "GOOGL",
@@ -362,6 +367,11 @@
    "ticker": "AMZN",
    "year": 2025,
    "ratio": 0.945
+  },
+  {
+   "ticker": "AMZN",
+   "year": 2026,
+   "ratio": 1.072
   },
   {
    "ticker": "META",
@@ -656,6 +666,11 @@
    "date": "2026-07-27",
    "model": "RTX 4090",
    "usd": 0.1689
+  },
+  {
+   "date": "2026-08-03",
+   "model": "RTX 4090",
+   "usd": 0.2154
   }
  ]
 }
