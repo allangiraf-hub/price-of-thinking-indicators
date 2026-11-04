@@ -7,7 +7,9 @@ financed in a way that can absorb disappointment. Companion to chapter 9 of
 
 **Dashboard:** https://indicators.priceofthinking.com/
 (auto-refreshed weekly by GitHub Actions; every number traceable to a
-public primary source).
+public primary source). Set in the Codex design (v4.3) of The Price of
+Thinking, with the fonts served by priceofthinking.com; charts use the vendored
+Codex chart theme in `src/potindicators/chart_theme/`.
 
 ## The four indicators
 
@@ -43,6 +45,7 @@ construction) frame the macro picture.
 pip install -e .
 python -m potindicators.cli all        # full refresh
 python -m potindicators.cli gpu        # one indicator
+python -m potindicators.cli render     # redraw charts and pages from docs/data.json, no EDGAR/vast.ai fetch
 pytest                                  # tests
 ```
 

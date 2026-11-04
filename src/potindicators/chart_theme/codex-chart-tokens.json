@@ -1,0 +1,65 @@
+{
+  "$schema": "codex-chart-tokens/1",
+  "provenance": "Vendored from Dropbox PKM/09-Meta/chart-theme/codex-chart-tokens.json (Codex chart theme v1.0, 3 Nov 2026) on 4 Nov 2026; do not edit here.",
+  "name": "Codex chart tokens",
+  "version": "1.0",
+  "date": "2026-11-03",
+  "source_of_truth": "personal-site/static/codex/tokens.json (web); this file mirrors its figure block for the sandbox, Typst and deck tooling",
+  "standard": "PKM/09-Meta/Presentation-and-Illustration-Standard.md §C, R13–R21; Codex-Design-Standard-v4.md §3 Figures (v4.1)",
+  "ground": {
+    "plate": "#f1efe9",
+    "plate_dark": "#d9d6cf",
+    "page": "#e8e5de",
+    "paper": "#ffffff"
+  },
+  "ink": {
+    "fg_1": "#26292e",
+    "fg_2": "#4f535a",
+    "rule": "#bdbcb7",
+    "rule_strong": "#26292e"
+  },
+  "figure": {
+    "emphasis": "#2a5c4d",
+    "emphasis_name": "verdigris",
+    "emphasis_rule": "one series per figure — the one the title names; never on an inverted (ink) block; text in it only on plate, page or paper",
+    "series": ["#2a5c4d", "#26292e", "#4f535a", "#7c7e82"],
+    "series_names": ["verdigris", "ink", "slate", "ash"],
+    "series_dash": ["solid", "solid", "7 4", "2 4"],
+    "context": "#7c7e82",
+    "context_name": "ash",
+    "gridline": "#d3d0c8",
+    "gridline_name": "stone-2",
+    "area_fill": "#d3d0c8",
+    "annotation": "#4f535a"
+  },
+  "contrast_on_plate": {
+    "verdigris": 6.7,
+    "ink": 12.7,
+    "slate": 6.7,
+    "ash": 3.5,
+    "note": "ash is for context series and must carry a direct label; it fails 4.5:1 for small text"
+  },
+  "type": {
+    "title": {"family": "Tiempos Headline", "weight": 500, "role": "the message, a sentence"},
+    "subtitle": {"family": "Forma DJR Text", "weight": 400, "role": "measure and unit"},
+    "label": {"family": "Forma DJR Text", "weight": 400, "role": "axes, ticks, direct series labels"},
+    "caption": {"family": "Forma DJR Micro", "weight": 400, "role": "source, method, date"},
+    "numerals": "lining tabular in every Forma setting"
+  },
+  "sizes_pt": {
+    "paper_single_column": {"width_mm": 159, "title": 11, "subtitle": 8.25, "label": 8.25, "caption": 8.25, "line": 1.1, "emphasis_line": 1.8},
+    "web_plate": {"width_px": 1056, "title": 22, "subtitle": 13, "label": 13, "caption": 13, "line": 2.5},
+    "slide": {"width_pt": 848, "title": 28, "subtitle": 14, "label": 12, "caption": 12, "line": 1.25, "emphasis_line": 2.5}
+  },
+  "rules": {
+    "bars_start_at_zero": true,
+    "line_min_headroom_below": 0.33,
+    "dual_axis": false,
+    "legend": false,
+    "direct_labels": true,
+    "max_highlighted_series": 4,
+    "pie_max_slices": 3,
+    "three_d": false,
+    "donut": false
+  }
+}

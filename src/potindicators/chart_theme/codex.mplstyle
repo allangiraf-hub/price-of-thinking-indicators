@@ -1,0 +1,77 @@
+# Vendored from Dropbox PKM/09-Meta/chart-theme/codex.mplstyle (Codex chart theme v1.0) on 4 Nov 2026; do not edit here.
+# Codex house chart style for matplotlib — v1.0, 3 Nov 2026
+# Standard: PKM/09-Meta/Presentation-and-Illustration-Standard.md (R13–R21)
+# Tokens:   PKM/09-Meta/chart-theme/codex-chart-tokens.json
+# Use:      plt.style.use("codex.mplstyle") or codex_charts.use()
+# Fonts: Tiempos Headline (titles) and Forma DJR (everything else) must be installed
+# for the renderer; the fallbacks keep the geometry when they are not.
+
+# --- ground and ink ---------------------------------------------------------
+figure.facecolor:      f1efe9
+axes.facecolor:        f1efe9
+savefig.facecolor:     f1efe9
+savefig.edgecolor:     none
+text.color:            26292e
+axes.labelcolor:       4f535a
+xtick.color:           4f535a
+ytick.color:           4f535a
+axes.edgecolor:        26292e
+
+# --- series: verdigris (emphasis), ink, slate, ash; rest handled in code -----
+axes.prop_cycle:       cycler('color', ['2a5c4d', '26292e', '4f535a', '7c7e82']) + cycler('linestyle', ['-', '-', (0, (7, 4)), (0, (2, 4))])
+lines.linewidth:       1.6
+lines.solid_capstyle:  round
+lines.dash_capstyle:   round
+patch.linewidth:       0
+patch.edgecolor:       f1efe9
+
+# --- type -------------------------------------------------------------------
+font.family:           sans-serif
+font.sans-serif:       Forma DJR Text, Forma DJR Micro, Forma DJR, DejaVu Sans
+font.size:             9
+axes.titlesize:        12
+axes.titleweight:      medium
+axes.titlelocation:    left
+axes.titlepad:         14
+axes.labelsize:        9
+xtick.labelsize:       8.5
+ytick.labelsize:       8.5
+legend.fontsize:       8.5
+figure.titlesize:      12
+mathtext.default:      regular
+
+# --- frame: no box, no legend, grey horizontal rules only -------------------
+axes.spines.top:       False
+axes.spines.right:     False
+axes.spines.left:      False
+axes.spines.bottom:    True
+axes.linewidth:        0.6
+axes.grid:             True
+axes.grid.axis:        y
+grid.color:            d3d0c8
+grid.linewidth:        0.6
+grid.alpha:            1.0
+axes.axisbelow:        True
+xtick.direction:       out
+ytick.direction:       out
+xtick.major.size:      3
+ytick.major.size:      0
+xtick.major.width:     0.6
+ytick.major.width:     0
+xtick.minor.visible:   False
+ytick.minor.visible:   False
+legend.frameon:        False
+axes.formatter.use_mathtext: False
+axes.formatter.useoffset:    False
+
+# --- layout and output ------------------------------------------------------
+figure.figsize:        6.26, 3.6
+figure.dpi:            100
+savefig.dpi:           300
+savefig.bbox:          tight
+savefig.pad_inches:    0.08
+figure.constrained_layout.use: True
+svg.fonttype:          none
+pdf.fonttype:          42
+ps.fonttype:           42
+
