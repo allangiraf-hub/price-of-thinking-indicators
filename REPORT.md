@@ -1,6 +1,6 @@
 # AI boom indicators
 
-*Last refresh: 2026-11-16*
+*Last refresh: 2026-11-23*
 
 Four falsifiable indicators of whether the AI investment boom is being
 financed in a way that can absorb disappointment. Companion to chapter 9
